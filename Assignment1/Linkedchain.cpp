@@ -1,17 +1,49 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
-class Linkedchain{
+#include "LinkedChain.h"
 
     //functions..
 
-     void Linkedchain :: push_back ( int x );
-     void Linkedchain :: pop_front () { /* TODO */ }
-     int Linkedchain :: front () const { /* TODO */ }
-     bool Linkedchain :: empty () const { /* TODO */ }
+void LinkedChain::push_back (const int& x ){
+    Node* n = new Node(x, nullptr); 
+    if (!head_){
+        head_ = n;
+        tail_ = head_;
+    }
 
-     //destructor
-    Linkedchain ::~ Linkedchain () { /* TODO : delete all nodes */ }
-};
+    else{
+        tail_ -> setNext(n);
+        tail_ = n;
+    }
+     
+}
+void LinkedChain::pop_front () { 
+    Node* n = head_;
+    head_ = head_ -> getNext();
+    n -> setNext(nullptr);
+    delete n;
+    
+
+}
+int LinkedChain::front () const { 
+    Node* n = head_;
+    return n->getData();
+}
+bool LinkedChain::empty () const { 
+    if (!head_){
+        return true;
+    }
+    return false;
+}
+
+//destructor
+LinkedChain::~LinkedChain () {
+    Node* cur = head_;
+    while (cur != nullptr){
+        pop_front();
+        cur = head_;
+    }
+}
+
 
