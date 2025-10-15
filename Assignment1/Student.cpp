@@ -7,7 +7,7 @@ class Student {
     // getter and setters
     Student();
     Student (const int& id, const std :: string& name, const std :: string& completed);
-    
+
     int id() const;
     void setid(int v);
     std :: string name() const;
@@ -23,6 +23,6 @@ class Student {
     private:
     int id_;
     std :: string name_;
-    std :: vector<std :: string> completedCourses;
+    std :: vector<std :: string> completedCourses_;
 
 };
