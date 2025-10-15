@@ -3,10 +3,11 @@
 
 class Student{
     
-    //just added this not sure if needed 
+    //cosntructors (might or might not be needed)
     Student();
 
-    Student (const int )
+    Student (const int& id, const std :: string& name, const std :: string& completed);
+
     //functions declarations for courses.
     void addCompleted(const std :: string& c);
 
