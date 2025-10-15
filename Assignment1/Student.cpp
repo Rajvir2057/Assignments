@@ -1,28 +1,45 @@
 #include <iostream>
-#include <vector>
-#include <string>
+#include <ranges>
+#include "Student.h"
 
-class Student {
 
-    // getter and setters
-    Student();
-    Student (const int& id, const std :: string& name, const std :: string& completed);
+//constructors
+     Student :: Student() {
+}
+     Student :: Student (const int& id, const std :: string& name, const std :: string& completed) {}
 
-    int id() const;
-    void setid(int v);
-    std :: string name() const;
-    void setName(const std :: string& n);
+    int  Student :: id() const {
+        return id_;
+    }
+    void  Student :: setid(int i) {
+        id_ = i;
+    }
+
+    std :: string  Student :: name() const {
+        return name_;
+    }
+    void  Student :: setName(const std :: string& n) {
+        name_ = n;
+    }
 
     // course completion
-    void addCompleted(const std :: string& c);
-    bool hasCompleted (const std :: string& c);
-    std :: vector<std :: string> completedCourses() const;
+    void  Student :: addCompleted(const std :: string& c) {
+        completedCourses_.push_back(c);
+    }
 
-    // add meat to all the above.
-    
-    private:
-    int id_;
-    std :: string name_;
-    std :: vector<std :: string> completedCourses_;
+    bool  Student :: hasCompleted (const std :: string& c) {
 
-};
+        return (std :: ranges :: find(completedCourses_, c) != completedCourses_.end());
+
+        //find if is a function thats finds a container. 
+        //std :: ranges :: find is the c++20 version in <ranges> library cited from cpp reference alogrithms for vectors from algorithms library.
+        //if not we can use std :: find in <algorithm> library
+
+        // Change C++ version in vscode: https://stackoverflow.com/a/68401689
+    }
+
+    std :: vector<std :: string> Student :: completedCourses() const {
+         return completedCourses_;
+    }
+
+    // c is courses , i is for id and n is for name.

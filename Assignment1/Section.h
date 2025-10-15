@@ -3,7 +3,7 @@
 
 class Section{
 
-    //again not sure jsur declaring the fucntions 
+    //again not sure just declaring the fucntions 
         bool isFull () const ; 
 
         bool isEnrolled ( int studentId ) const ; 
