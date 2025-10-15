@@ -29,6 +29,6 @@ class Section {
         std :: string courseCode_ ;
         int enrolled_ [ MAX_CAPACITY ];
         int count_ = 0;
-        Linkedchain waitlist_ ; // stores int student IDs
+        LinkedChain waitlist_ ; // stores int student IDs
 
 };
