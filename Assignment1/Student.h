@@ -15,9 +15,6 @@ class Student{
 
     std :: vector<std :: string> completedCourses() const;
 
-    //function declarations to add student id and name.
-    
-    void addStudentinfo(const int id, std :: string Name);
 
 };
 #include "Student.cpp"
