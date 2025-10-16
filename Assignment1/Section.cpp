@@ -1,34 +1,20 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include "Linkedchain.h"
-
-class Section {
-
-    public :
-        static const int MAX_CAPACITY = 50;
+#include "Section.h"
 
     // -- construction --
 
-        Section () ; // TODO
-        Section (int sectionId , const std :: string & courseCode ) ; // TODO
+        Section ::  Section () {}
+        Section :: Section (int sectionId , const std :: string & courseCode ){
+        }
 
     // -- main behaviour --
-        bool isFull () const ; // TODO
-        bool isEnrolled ( int studentId ) const ; // TODO
-        bool enroll (int studentId ) ; // TODO ( array insert or waitlist )
-        bool drop (int studentId ) ; // TODO ( remove + promote from waitlist )
+        bool Section ::  isFull () const {} // TODO
+        bool Section :: isEnrolled ( int studentId ) const {} // TODO
+        bool Section :: enroll (int studentId ) {} // TODO ( array insert or waitlist )
+        bool Section :: drop (int studentId ) {} // TODO ( remove + promote from waitlist )
 
     // -- minimal getters --
-        int size () const ; // TODO
-        int sectionId () const ; // TODO
-        std :: string courseCode () const ; // TODO
+        int Section :: size () const {} // TODO
+        int Section :: sectionId () const {} // TODO
+        std :: string Section ::  courseCode () const {} // TODO
 
-    private :
-        int sectionId_ = -1;
-        std :: string courseCode_ ;
-        int enrolled_ [ MAX_CAPACITY ];
-        int count_ = 0;
-        LinkedChain waitlist_ ; // stores int student IDs
-
-};

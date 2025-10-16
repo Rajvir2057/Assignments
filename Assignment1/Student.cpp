@@ -4,8 +4,8 @@
 
 
 //constructors
-     Student :: Student() {
-}
+     Student :: Student() {}
+
      Student :: Student (const int& id, const std :: string& name, const std :: string& completed) {}
 
     int  Student :: id() const {
