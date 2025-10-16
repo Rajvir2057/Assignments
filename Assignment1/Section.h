@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "Linkedchain.h"
+#include "Registrar.h"
 
 class Section {
 
