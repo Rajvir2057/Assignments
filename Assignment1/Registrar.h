@@ -1,9 +1,12 @@
+#ifndef REGISTRAR_
+#define REGISTRAR_
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Student.cpp"
-#include "Course.cpp"
-#include "Section.cpp"
+#include "Student.h"
+#include "Course.h"
+#include "Section.h"
 
 
 class Registrar {
@@ -32,3 +35,5 @@ class Registrar {
         std :: vector < Section > sections_ ;
 
 };
+#include "Registrar.cpp"
+#endif

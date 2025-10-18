@@ -1,34 +1,69 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include "Student.cpp"
-#include "Course.cpp"
-#include "Section.cpp"
+#include "Registrar.h"
+// -- APIs students will call --
+bool Registrar::enrollStudentInSection ( int studentId , int sectionId ) {
+    Student* a = findStudent(studentId);
+    Section* b = findSection(sectionId);
+    Course* c = findCourseByCode(b->courseCode());
+    std::vector <std::string> prereqs = c->prereqs();
+    int i =0;
+    if (a, b, c){
+        if(prerequisitesOk(*a,*c)){
+            return b->enroll(studentId);
+        }
+    }
+    
+    return false;
+} 
+bool Registrar::dropStudentFromSection ( int studentId , int sectionId ) {
+    return findSection(sectionId)->drop(studentId);
+} // TODO
 
+// -- adding to registries --
+void Registrar::addStudent ( const Student & s ) {
+    students_.push_back(s);
+} 
+void Registrar::addCourse ( const Course & c ) {
+    courses_.push_back(c);
+} 
+void Registrar::addSection ( const Section & s ) {
+    sections_.push_back(s);
+} 
 
-class Registrar {
+// -- basic finders ( return nullptr if not found ) --
+Student * Registrar::findStudent (int id ) {
+    for (int i=0; i< students_.size(); i++){
+        if (students_[i].id() == id){
+            return &students_[i];
+        }
+    }
+    return nullptr;
+} 
+Section * Registrar::findSection (int sectionId ) {
+    for (int i=0; i< sections_.size(); i++){
+        if (sections_[i].sectionId() == sectionId){
+            return &sections_[i];
+        }
+    }
+    return nullptr;
+} 
+Course * Registrar::findCourseByCode ( const std :: string & code ) {
+    for (int i=0; i< students_.size(); i++){
+        if (courses_[i].code() == code){
+            return &courses_[i];
+        }
+    }
+    return nullptr;
+} 
 
-    public :
-    // -- APIs students will call --
-        bool enrollStudentInSection ( int studentId , int sectionId ) ; // TODO
-        bool dropStudentFromSection ( int studentId , int sectionId ) ; // TODO
-
-    // -- adding to registries --
-        void addStudent ( const Student & s ) ; // TODO
-        void addCourse ( const Course & c ) ; // TODO
-        void addSection ( const Section & s ) ; // TODO
-
-    // -- basic finders ( return nullptr if not found ) --
-        Student * findStudent (int id ) ; // TODO
-        Section * findSection (int sectionId ) ; // TODO
-        Course * findCourseByCode ( const std :: string & code ) ; // TODO
-
-    private :
 // helper for prereq check
-        bool prerequisitesOk ( const Student & s , const Course & c ) const ; // Todo
-
-        std :: vector < Student > students_ ;
-        std :: vector < Course > courses_ ;
-        std :: vector < Section > sections_ ;
-
-};
+bool Registrar::prerequisitesOk ( const Student & s , const Course & c ) const {
+    std::vector <std::string> prereqs = c.prereqs();
+    int i=0;
+    while(i<prereqs.size()){
+            if (s.hasCompleted(prereqs[i])){
+                return false;
+            }
+            i++;
+    }
+    return true;
+} 
