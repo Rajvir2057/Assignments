@@ -35,5 +35,5 @@ class Section {
         LinkedChain waitlist_ ; // stores int student IDs
 
 };
-#include "section.cpp"
+#include "Section.cpp"
 #endif 
