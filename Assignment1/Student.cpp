@@ -4,9 +4,9 @@
 
 
 //constructors
-     Student :: Student() {}
+    Student :: Student() {}
 
-     Student :: Student (const int& id, const std :: string& name, const std :: string& completed) {}
+    Student :: Student (const int& id, const std :: string& name, const std :: string& completed) {}
 
     int  Student :: id() const {
         return id_;
@@ -27,7 +27,7 @@
         completedCourses_.push_back(c);
     }
 
-    bool  Student :: hasCompleted (const std :: string& c) {
+    bool  Student :: hasCompleted (const std :: string& c) const {
 
         return (std :: ranges :: find(completedCourses_, c) != completedCourses_.end());
 
