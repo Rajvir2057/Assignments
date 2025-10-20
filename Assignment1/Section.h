@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <iostream> 
 #include "Linkedchain.h"
-#include "Registrar.h"
 
 class Section {
 
@@ -14,7 +14,7 @@ class Section {
     // -- construction --
 
         Section () ; // TODO
-        Section (int sectionId , const std :: string & courseCode ) ; // TODO
+        Section (int sectionId , const std :: string & courseCode, const int& cap_ ) ; // TODO
 
     // -- main behaviour --
         bool isFull () const ; // TODO
@@ -27,7 +27,11 @@ class Section {
         int sectionId () const ; // TODO
         std :: string courseCode () const ; // TODO
 
+    // --Student getters --
+        void studentList () const; //prints out the current students enrolled
+        void waitlistPrint() const;
     private :
+        int cap_;
         int sectionId_ = -1;
         std :: string courseCode_ ;
         int enrolled_ [ MAX_CAPACITY ];
@@ -35,5 +39,4 @@ class Section {
         LinkedChain waitlist_ ; // stores int student IDs
 
 };
-#include "Section.cpp"
 #endif 

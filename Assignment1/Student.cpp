@@ -6,7 +6,8 @@
 //constructors
     Student :: Student() {}
 
-    Student :: Student (const int& id, const std :: string& name, const std :: string& completed) {}
+    Student :: Student (const int& id, const std :: string& name, const std::vector<std :: string>& completed):
+    id_(id), name_(name), completedCourses_(completed) {}
 
     int  Student :: id() const {
         return id_;
@@ -28,15 +29,21 @@
     }
 
     bool  Student :: hasCompleted (const std :: string& c) const {
-
-        return (std :: ranges :: find(completedCourses_, c) != completedCourses_.end());
-
+        if(completedCourses_.empty()){
+            return false;
+        }
+    
+        else{
+            bool a = std::ranges::find(completedCourses_, c)!=completedCourses_.end();
+            return(a);
+        }
+        
         //find if is a function thats finds a container. 
         //std :: ranges :: find is the c++20 version in <ranges> library cited from cpp reference alogrithms for vectors from algorithms library.
         //if not we can use std :: find in <algorithm> library
 
         // Change C++ version in vscode: https://stackoverflow.com/a/68401689
-    }
+    }   
 
     std :: vector<std :: string> Student :: completedCourses() const {
          return completedCourses_;

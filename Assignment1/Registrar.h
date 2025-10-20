@@ -1,7 +1,7 @@
 #ifndef REGISTRAR_
 #define REGISTRAR_
 
-#include <iostream>
+#include <iostream> //Testing purposes only
 #include <string>
 #include <vector>
 #include "Student.h"
@@ -25,15 +25,16 @@ class Registrar {
         Student * findStudent (int id ) ; // TODO
         Section * findSection (int sectionId ) ; // TODO
         Course * findCourseByCode ( const std :: string & code ) ; // TODO
-
+        
+        void studentPrint(int sectionId);
+        void waitlistPrint(int sectionId);
     private :
 // helper for prereq check
-        bool prerequisitesOk ( const Student & s , const Course & c ) const ; // Todo
+        bool prerequisitesOk (const Student& s , const Course & c ) const ; // Todo
 
         std :: vector < Student > students_ ;
         std :: vector < Course > courses_ ;
         std :: vector < Section > sections_ ;
 
 };
-#include "Registrar.cpp"
 #endif

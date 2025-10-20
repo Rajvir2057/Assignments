@@ -7,6 +7,8 @@
 class Course{
     
     public:
+    Course();
+    Course(const std::string& code, const std::string& title, const std::vector<std::string>& newPrereq);
     //getters and setters
     std :: string code() const;
     void setCode(const std :: string& c);
@@ -25,5 +27,5 @@ class Course{
     std :: string title_;
     std :: vector<std :: string> prereqs_;
 };
-#include "Course.cpp"
+
 #endif  

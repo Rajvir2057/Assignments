@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Course.h"
 
+Course::Course(): code_("0"),title_(""),prereqs_(){}
+Course::Course(const std::string& code, const std::string& title, const std::vector<std::string>& newPrereq) : code_(code),title_(title),prereqs_(newPrereq){}
 std :: string Course::code() const{
     return code_;
 }

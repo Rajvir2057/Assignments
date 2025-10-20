@@ -5,11 +5,8 @@ bool Registrar::enrollStudentInSection ( int studentId , int sectionId ) {
     Section* b = findSection(sectionId);
     Course* c = findCourseByCode(b->courseCode());
     std::vector <std::string> prereqs = c->prereqs();
-    int i =0;
-    if (a, b, c){
-        if(prerequisitesOk(*a,*c)){
-            return b->enroll(studentId);
-        }
+    if(prerequisitesOk(*a,*c)){
+        return b->enroll(studentId);
     }
     
     return false;
@@ -46,6 +43,7 @@ Section * Registrar::findSection (int sectionId ) {
     }
     return nullptr;
 } 
+
 Course * Registrar::findCourseByCode ( const std :: string & code ) {
     for (int i=0; i< students_.size(); i++){
         if (courses_[i].code() == code){
@@ -55,15 +53,28 @@ Course * Registrar::findCourseByCode ( const std :: string & code ) {
     return nullptr;
 } 
 
+void Registrar::studentPrint(int sectionId){
+    Section* a = findSection(sectionId);
+
+    a->studentList();
+}
+void Registrar::waitlistPrint(int sectionId){
+    Section*a = findSection(sectionId);
+
+    a->waitlistPrint();
+}
 // helper for prereq check
-bool Registrar::prerequisitesOk ( const Student & s , const Course & c ) const {
+bool Registrar::prerequisitesOk (const Student& s , const Course & c ) const {
     std::vector <std::string> prereqs = c.prereqs();
-    int i=0;
-    while(i<prereqs.size()){
-            if (s.hasCompleted(prereqs[i])){
-                return false;
-            }
-            i++;
+    //Referenced from https://stackoverflow.com/questions/12702561/iterate-through-a-c-vector-using-a-for-loop
+    if (prereqs.empty()){
+        return true;
     }
-    return true;
+    
+    for(std::string i : prereqs){
+            if (s.hasCompleted(i)){
+                return true;
+            }
+    }
+    return false;
 } 
