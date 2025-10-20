@@ -18,6 +18,7 @@ int main(){
     Section two(2001, "CSC200", 2);
     Section three(3001, "CSC300", 3);
 
+    //Adding everything to registrar
     Registrar reg;
     reg.addStudent(a);
     reg.addStudent(b);
@@ -52,6 +53,7 @@ int main(){
     std::cout<<reg.enrollStudentInSection(30,1001);
     reg.studentPrint(1001);
     reg.waitlistPrint(1001);
+    
 
     //T2
     std::cout<<"\nT2: Promotion\nDrop Alice Johnson from 1001 (0= fail, 1=success): ";

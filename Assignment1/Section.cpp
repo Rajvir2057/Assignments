@@ -9,6 +9,7 @@
     // -- main behaviour --
         bool Section ::  isFull () const {
             return (size() == cap_||size()==MAX_CAPACITY);
+            //O(1)
         } 
 
         bool Section :: isEnrolled ( int studentId ) const {
@@ -17,6 +18,7 @@
                     return true;
                 }
             }return false;
+            //O(n)
         } 
 
         bool Section :: enroll (int studentId ) {
@@ -34,6 +36,7 @@
                     return true;
                 }
             }
+            //O(n)
         } 
 
         bool Section :: drop (int studentId ) {
@@ -58,18 +61,22 @@
                 return true;
             }
             return false;
+            //O(n)
         } 
 
     // -- minimal getters --
         int Section :: size () const {
             return count_;
+            //O(1)
         } 
 
         int Section :: sectionId () const {
                 return sectionId_;
+                //O(1)
         } 
         std :: string Section ::  courseCode () const {
             return courseCode_;
+            //O(1)
         }
         void Section::studentList () const{
             std::cout<<"\nCurrent students in "<< sectionId() << ": ";
@@ -81,6 +88,7 @@
                 std::cout<<" ";
             }
             std::cout<<"}";
+            //O(n)
         }
         void Section::waitlistPrint() const{
             if(!waitlist_.empty()){
@@ -89,6 +97,7 @@
             else{
                 std::cout<<"\nWaitlist : {}\n";
             }
+            //O(1)
             
         }
 

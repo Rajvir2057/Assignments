@@ -16,6 +16,7 @@ void LinkedChain::push_back (const int& x ){
         tail_ -> setNext(n);
         tail_ = n;
     }
+    //O(1)
      
 }
 void LinkedChain::pop_front () { 
@@ -24,17 +25,20 @@ void LinkedChain::pop_front () {
     n -> setNext(nullptr);
     delete n;
     
+    //O(1)
 
 }
 int LinkedChain::front () const { 
     Node* n = head_;
     return n->getData();
+    //O(1)
 }
 bool LinkedChain::empty () const { 
     if (!head_){
         return true;
     }
     return false;
+    //O(1)
 }
 
 //destructor
@@ -44,6 +48,7 @@ LinkedChain::~LinkedChain () {
         pop_front();
         cur = head_;
     }
+    //O(1)
 }
 
 

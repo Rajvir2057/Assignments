@@ -26,6 +26,8 @@ class Registrar {
         Section * findSection (int sectionId ) ; // TODO
         Course * findCourseByCode ( const std :: string & code ) ; // TODO
         
+    
+    //Prints out student list and first element in waitlist
         void studentPrint(int sectionId);
         void waitlistPrint(int sectionId);
     private :

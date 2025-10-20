@@ -14,24 +14,23 @@ class Section {
     // -- construction --
 
         Section () ; // TODO
-        Section (int sectionId , const std :: string & courseCode, const int& cap_ ) ; // TODO
+        Section (int sectionId , const std :: string & courseCode, const int& cap_ ) ; 
 
     // -- main behaviour --
-        bool isFull () const ; // TODO
-        bool isEnrolled ( int studentId ) const ; // TODO
-        bool enroll (int studentId ) ; // TODO ( array insert or waitlist )
-        bool drop (int studentId ) ; // TODO ( remove + promote from waitlist )
+        bool isFull () const ; 
+        bool isEnrolled ( int studentId ) const ; 
+        bool enroll (int studentId ) ;
+        bool drop (int studentId ) ; 
 
     // -- minimal getters --
-        int size () const ; // TODO
-        int sectionId () const ; // TODO
-        std :: string courseCode () const ; // TODO
-
+        int size () const ; 
+        int sectionId () const ; 
+        std :: string courseCode () const ; 
     // --Student getters --
         void studentList () const; //prints out the current students enrolled
-        void waitlistPrint() const;
+        void waitlistPrint() const; //prints out the first waitlist spot
     private :
-        int cap_;
+        int cap_; //capacity that limits the amount of usable array elements
         int sectionId_ = -1;
         std :: string courseCode_ ;
         int enrolled_ [ MAX_CAPACITY ];

@@ -8,22 +8,26 @@ bool Registrar::enrollStudentInSection ( int studentId , int sectionId ) {
     if(prerequisitesOk(*a,*c)){
         return b->enroll(studentId);
     }
-    
+    //O(n)
     return false;
 } 
 bool Registrar::dropStudentFromSection ( int studentId , int sectionId ) {
     return findSection(sectionId)->drop(studentId);
-} // TODO
+    //O(n)
+} 
 
 // -- adding to registries --
 void Registrar::addStudent ( const Student & s ) {
     students_.push_back(s);
+    //O(1)
 } 
 void Registrar::addCourse ( const Course & c ) {
     courses_.push_back(c);
+    //O(1)
 } 
 void Registrar::addSection ( const Section & s ) {
     sections_.push_back(s);
+    //O(1)
 } 
 
 // -- basic finders ( return nullptr if not found ) --
@@ -34,6 +38,7 @@ Student * Registrar::findStudent (int id ) {
         }
     }
     return nullptr;
+    //O(n)
 } 
 Section * Registrar::findSection (int sectionId ) {
     for (int i=0; i< sections_.size(); i++){
@@ -42,6 +47,7 @@ Section * Registrar::findSection (int sectionId ) {
         }
     }
     return nullptr;
+    //O(n)
 } 
 
 Course * Registrar::findCourseByCode ( const std :: string & code ) {
@@ -51,18 +57,25 @@ Course * Registrar::findCourseByCode ( const std :: string & code ) {
         }
     }
     return nullptr;
+    //O(n)
 } 
 
+//Prints out the enrolled students in that section
 void Registrar::studentPrint(int sectionId){
     Section* a = findSection(sectionId);
 
     a->studentList();
-}
+    //O(n)
+} 
+
+//Prints out the first position in waitlist
 void Registrar::waitlistPrint(int sectionId){
     Section*a = findSection(sectionId);
 
     a->waitlistPrint();
-}
+    //O(1)
+} 
+
 // helper for prereq check
 bool Registrar::prerequisitesOk (const Student& s , const Course & c ) const {
     std::vector <std::string> prereqs = c.prereqs();
@@ -77,4 +90,5 @@ bool Registrar::prerequisitesOk (const Student& s , const Course & c ) const {
             }
     }
     return false;
+    //O(n)
 } 
