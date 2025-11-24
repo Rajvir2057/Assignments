@@ -10,8 +10,12 @@ class Registrar {
 
     public :
     // -- APIs students will call --
-        bool enrollStudentInSection ( int studentId , int sectionId ) ; // TODO
-        bool dropStudentFromSection ( int studentId , int sectionId ) ; // TODO
+        bool enrollStudentInSection ( int studentId , int sectionId ){
+
+        } // TODO
+        bool dropStudentFromSection ( int studentId , int sectionId ){
+            
+        } // TODO
 
     // -- adding to registries --
         void addStudent ( const Student & s ) ; // TODO
