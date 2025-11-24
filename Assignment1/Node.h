@@ -15,5 +15,4 @@ struct Node{
         void setData(const int& i);
 };
 
-#include "Node.cpp"
 #endif 

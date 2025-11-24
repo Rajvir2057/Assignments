@@ -5,10 +5,10 @@
 #include <string>
 
 class Student {
-
+    public:
     // getter and setters
     Student();
-    Student (const int& id, const std :: string& name, const std :: string& completed);
+    Student (const int& id, const std :: string& name, const std::vector<std :: string>& completed);
 
     int id() const;
     void setid(int v);
@@ -17,7 +17,7 @@ class Student {
 
     // course completion
     void addCompleted(const std :: string& c);
-    bool hasCompleted (const std :: string& c);
+    bool hasCompleted (const std :: string& c) const;
     std :: vector<std :: string> completedCourses() const;
 
     // add meat to all the above.
@@ -25,7 +25,7 @@ class Student {
     private:
     int id_;
     std :: string name_;
-    std :: vector<std :: string> completedCourses_;
+    std :: vector<std :: string> completedCourses_ = {};
 
 };
 
@@ -45,5 +45,4 @@ class Student {
 
 
 };*/
-#include "Student.cpp"
 #endif 
