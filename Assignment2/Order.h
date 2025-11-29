@@ -38,6 +38,11 @@ public:
     std::string deliveryAddress() const;
     void setDeliveryAddress(const std::string& addr);
 
+    void initValues(int i, 
+        int t, const std::string& ty, 
+        const std::string& src);
+    
+    
 private:
     int id_ = -1;
 
