@@ -1,5 +1,4 @@
 //Order.cpp
-#pragma once
 #include "Order.h"
 
 int Order::id() const {return id_;}
