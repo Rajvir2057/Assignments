@@ -32,6 +32,7 @@ public:
     void printState() const;  // simple summary of state
     Order* findOrderById(int id); // delegate to OrderBook
 
+
 private:
     OrderBook orderBook_;         // registry of all orders
     SimpleQueue regularQueue_;    // regular order IDs
