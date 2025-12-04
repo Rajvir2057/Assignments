@@ -1,5 +1,6 @@
 #include "Restaurant.h"
 int main(){
+
     Restaurant a;
     Order one;
     Order two;
@@ -7,6 +8,7 @@ int main(){
     Order four;
     Order five;
     Order six;
+    
     //Initialization of order ID, name, table, and type
     one.initValues(101, 5, "Margherita Pizza", "DineIn");
     two.initValues(102, 3, "Caesar Salad", "DineIn");
