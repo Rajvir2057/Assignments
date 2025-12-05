@@ -42,8 +42,7 @@ int main(){
     a.completeNextOrder();
     a.printState();
 
-    std::cout<<"\nExpected : 101 removed -> 102 removed -> empty";
-    delete &a;
+    std::cout<<"\nExpected : 101 removed -> 102 removed -> empty\n";
 
 //R2
     Restaurant b;
@@ -65,8 +64,7 @@ int main(){
     b.completeNextOrder();
     b.printState();
     
-    std::cout<<"\nExpected : 202 removed -> 201 removed -> 101 removed";
-    delete &b;
+    std::cout<<"\nExpected : 202 removed -> 201 removed -> 101 removed\n";
 
 //R3
     //Creates a new restaurant
@@ -89,9 +87,7 @@ int main(){
     c.printState();
 
     std::cout<<"\nExpected : 102 removed -> 201 removed" <<"-> undo removal of 201, 201 restored"
-    <<"201 is moved to pendingRush";
-
-    delete &c;
+    <<"201 is moved to pendingRush\n";
 
 //R4
     Restaurant d;
@@ -110,7 +106,7 @@ int main(){
     d.completeNextOrder();
     d.printState();
 
-    std::cout<<"\nExpected : 201 removed -> 203 removed -> 202 removed";
+    std::cout<<"\nExpected : 201 removed -> 203 removed -> 202 removed\n";
 
 //R5
     Restaurant e;

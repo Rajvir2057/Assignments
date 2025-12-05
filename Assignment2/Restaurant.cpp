@@ -15,7 +15,7 @@ bool Restaurant :: placeDineInRegular(int orderId){
 
     Order* order = orderBook_.findOrderById(orderId);
 
-    order -> setStatus("Pending");
+    order -> setStatus("PendingRegular");
 
     regularQueue_.enqueue(orderId);
 
@@ -31,7 +31,7 @@ bool Restaurant :: placeDineInRush(int orderId, int priority){
 
     Order* order = orderBook_.findOrderById(orderId);
 
-    order -> setStatus("Pending");
+    order -> setStatus("PendingRush");
 
     rushQueue_.push(orderId, priority);
 
@@ -50,18 +50,26 @@ bool Restaurant :: completeNextOrder(){
     if(!rushQueue_.empty()){
         //do rushqueue
         Order * order = findOrderById(rushQueue_.top().id);
-        if(order -> status() != "Pendingrush" ) {
+        if(order -> status() == "PendingRush"){
+            order -> setStatus("Completed");
              rushQueue_.pop();
-        } 
+             return true;
+        }
 
     }else {
         //do rushqueue
+        if(regularQueue_.empty()){
+            return false;
+        }
         Order * order = findOrderById(regularQueue_.front());
-        if(order -> status() != "Pendingregular" ) {
+        if(order -> status() == "PendingRegular"){
+             order -> setStatus("Completed");
              regularQueue_.dequeue();
+             return true;
         } 
+    
     }
-
+    return false;
     
 }
 
@@ -90,13 +98,26 @@ bool Restaurant :: undoLastCompletion(){
     return true;
 }
 void Restaurant :: printState() const {
+    std :: cout << "Status:\n";
+    int count = 0;
     for(Order i : orderBook_.all()) {
-        std :: cout << i.status();
+        // dont print the completed
+        if (i.status() != "Completed") {
+            std :: cout << "ID: " << i.id() << " of " << i.customerName() << " (" << i.source() << "): " << i.status() << std :: endl;
+            count++;
+        }
+
     } 
+    if(count == 0){
+        std :: cout << "All completed. Thank you for dining." << "\n";
+    }
 }
 
 Order* Restaurant :: findOrderById(int id){
     if (orderBook_.findOrderById(id)){
         return orderBook_.findOrderById(id);
+    }
+    else{
+        return nullptr;
     }
 }
